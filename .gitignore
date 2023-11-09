@@ -1,5 +1,6 @@
 ### DotnetCore ###
 # .NET Core build folders
+.vscode/
 bin/
 obj/
 appsettings.Development.json
