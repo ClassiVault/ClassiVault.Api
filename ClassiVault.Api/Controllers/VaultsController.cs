@@ -3,11 +3,11 @@ using ClassiVault.Api.DataAccess.Models;
 
 [Route("api/[controller]")]
 [ApiController]
-public class PasswordVaultController : ControllerBase
+public class VaultsController : ControllerBase
 {
     private readonly IPasswordVaultService _service;
 
-    public PasswordVaultController(IPasswordVaultService service)
+    public VaultsController(IPasswordVaultService service)
     {
         _service = service;
     }
