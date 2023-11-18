@@ -1,3 +1,5 @@
+namespace ClassiVault.Api.DataAccess.Services;
+
 using ClassiVault.Api.DataAccess.Models;
 
 public interface IEncryptionKeyInfoService

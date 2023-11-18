@@ -1,5 +1,6 @@
 using ClassiVault.Api.DataAccess;
 using ClassiVault.Api.DataAccess.Models;
+using ClassiVault.Api.DataAccess.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Serilog;

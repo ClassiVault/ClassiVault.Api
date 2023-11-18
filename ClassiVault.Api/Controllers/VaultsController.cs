@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using ClassiVault.Api.DataAccess.Models;
+using ClassiVault.Api.DataAccess.Services;
 
 [Route("api/[controller]")]
 [ApiController]

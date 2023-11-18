@@ -1,3 +1,5 @@
+namespace ClassiVault.Api.DataAccess.Services;
+
 using Microsoft.EntityFrameworkCore;
 using ClassiVault.Api.DataAccess;
 using ClassiVault.Api.DataAccess.Models;

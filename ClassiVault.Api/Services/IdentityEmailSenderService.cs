@@ -1,3 +1,5 @@
+namespace ClassiVault.Api.DataAccess.Services;
+
 using ClassiVault.Api.DataAccess.Models;
 using Microsoft.AspNetCore.Identity;
 using Serilog;

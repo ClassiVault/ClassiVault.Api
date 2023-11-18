@@ -3,6 +3,7 @@ namespace ClassiVault.Tests;
 using System.Collections.Generic;
 using Moq;
 using ClassiVault.Api.DataAccess.Models;
+using ClassiVault.Api.DataAccess.Services;
 
 public class VaultServiceTests
 {
