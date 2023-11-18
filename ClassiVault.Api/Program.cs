@@ -2,6 +2,11 @@ using ClassiVault.Api.DataAccess;
 using ClassiVault.Api.DataAccess.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Serilog;
+
+Log.Logger = new LoggerConfiguration()
+    .WriteTo.Console()
+    .CreateLogger();
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +25,7 @@ builder.Services.AddIdentity<User, IdentityRole>()
     .AddDefaultTokenProviders();
 builder.Services.AddScoped<IPasswordVaultService, PasswordVaultService>();
 builder.Services.AddScoped<IEncryptionKeyInfoService, EncryptionKeyInfoService>();
+builder.Services.AddSingleton<IEmailSender<User>, IdentityEmailSenderService>();
 
 var app = builder.Build();
 
