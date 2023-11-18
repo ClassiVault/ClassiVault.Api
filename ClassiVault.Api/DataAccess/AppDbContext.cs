@@ -8,7 +8,7 @@ namespace ClassiVault.Api.DataAccess
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
-        public DbSet<PasswordVault> PasswordVaults { get; set; }
+        public DbSet<Vault> Vaults { get; set; }
         public DbSet<EncryptionKeyInfo> EncryptionKeyInfos { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -16,19 +16,19 @@ namespace ClassiVault.Api.DataAccess
             base.OnModelCreating(modelBuilder);
 
             // Configure the primary keys
-            modelBuilder.Entity<PasswordVault>().HasKey(pv => pv.VaultID);
-            modelBuilder.Entity<EncryptionKeyInfo>().HasKey(eki => eki.KeyID);
+            modelBuilder.Entity<Vault>().HasKey(pv => pv.Id);
+            modelBuilder.Entity<EncryptionKeyInfo>().HasKey(eki => eki.Id);
 
             // Configure the foreign key relationships
-            modelBuilder.Entity<PasswordVault>()
+            modelBuilder.Entity<Vault>()
                 .HasOne<User>(pv => pv.User)
-                .WithMany(u => u.PasswordVaults)
-                .HasForeignKey(pv => pv.UserID);
+                .WithMany(u => u.Vaults)
+                .HasForeignKey(pv => pv.UserId);
 
             modelBuilder.Entity<EncryptionKeyInfo>()
                 .HasOne<User>(eki => eki.User)
                 .WithMany(u => u.EncryptionKeyInfos)
-                .HasForeignKey(eki => eki.UserID);
+                .HasForeignKey(eki => eki.UserId);
         }
     }
 }

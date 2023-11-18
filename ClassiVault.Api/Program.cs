@@ -23,7 +23,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddIdentity<User, IdentityRole>()
     .AddEntityFrameworkStores<AppDbContext>()
     .AddDefaultTokenProviders();
-builder.Services.AddScoped<IPasswordVaultService, PasswordVaultService>();
+builder.Services.AddScoped<IVaultService, VaultService>();
 builder.Services.AddScoped<IEncryptionKeyInfoService, EncryptionKeyInfoService>();
 builder.Services.AddSingleton<IEmailSender<User>, IdentityEmailSenderService>();
 

@@ -1,10 +1,10 @@
 using ClassiVault.Api.DataAccess.Models;
 
-public interface IPasswordVaultService
+public interface IVaultService
 {
-  Task<List<PasswordVault>> GetAllAsync();
-  Task<PasswordVault?> GetOneAsync(long id);
-  Task<PasswordVault> AddAsync(PasswordVault passwordVault);
-  Task<PasswordVault> UpdateAsync(PasswordVault passwordVault);
+  Task<List<Vault>> GetAllAsync();
+  Task<Vault?> GetOneAsync(long id);
+  Task<Vault> AddAsync(Vault passwordVault);
+  Task<Vault> UpdateAsync(Vault passwordVault);
   Task DeleteAsync(long id);
 }

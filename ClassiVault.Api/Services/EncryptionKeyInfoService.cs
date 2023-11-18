@@ -18,7 +18,7 @@ public class EncryptionKeyInfoService : IEncryptionKeyInfoService
 
     public async Task<EncryptionKeyInfo?> GetOneAsync(long id)
     {
-      var encryptionKeyInfos = await _context.EncryptionKeyInfos.FirstOrDefaultAsync(eki => eki.KeyID == id);
+      var encryptionKeyInfos = await _context.EncryptionKeyInfos.FirstOrDefaultAsync(eki => eki.Id == id);
       return encryptionKeyInfos;
     }
 
@@ -38,7 +38,7 @@ public class EncryptionKeyInfoService : IEncryptionKeyInfoService
 
     public async Task DeleteAsync(long id)
     {
-        var encryptionKeyInfo = await _context.EncryptionKeyInfos.FirstOrDefaultAsync(eki => eki.KeyID == id);
+        var encryptionKeyInfo = await _context.EncryptionKeyInfos.FirstOrDefaultAsync(eki => eki.Id == id);
         if (encryptionKeyInfo != null)
         {
             _context.EncryptionKeyInfos.Remove(encryptionKeyInfo);

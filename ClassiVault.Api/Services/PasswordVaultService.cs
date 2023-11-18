@@ -5,46 +5,46 @@ using Microsoft.EntityFrameworkCore;
 using ClassiVault.Api.DataAccess;
 using ClassiVault.Api.DataAccess.Models;
 
-public class PasswordVaultService : IPasswordVaultService
+public class VaultService : IVaultService
 {
   private readonly AppDbContext _context;
 
-  public PasswordVaultService(AppDbContext context)
+  public VaultService(AppDbContext context)
   {
     _context = context;
   }
 
-  public async Task<List<PasswordVault>> GetAllAsync()
+  public async Task<List<Vault>> GetAllAsync()
   {
-    return await _context.PasswordVaults.ToListAsync();
+    return await _context.Vaults.ToListAsync();
   }
 
-  public async Task<PasswordVault?> GetOneAsync(long id)
+  public async Task<Vault?> GetOneAsync(long id)
   {
-    var passwordVault = await _context.PasswordVaults.FirstOrDefaultAsync(pv => pv.VaultID == id);
+    var passwordVault = await _context.Vaults.FirstOrDefaultAsync(pv => pv.Id == id);
     return passwordVault;
   }
 
-  public async Task<PasswordVault> AddAsync(PasswordVault passwordVault)
+  public async Task<Vault> AddAsync(Vault passwordVault)
   {
-    _context.PasswordVaults.Add(passwordVault);
+    _context.Vaults.Add(passwordVault);
     await _context.SaveChangesAsync();
     return passwordVault;
   }
 
-  public async Task<PasswordVault> UpdateAsync(PasswordVault passwordVault)
+  public async Task<Vault> UpdateAsync(Vault passwordVault)
   {
-    _context.PasswordVaults.Update(passwordVault);
+    _context.Vaults.Update(passwordVault);
     await _context.SaveChangesAsync();
     return passwordVault;
   }
 
   public async Task DeleteAsync(long id)
   {
-    var passwordVault = await _context.PasswordVaults.FirstOrDefaultAsync(pv => pv.VaultID == id);
+    var passwordVault = await _context.Vaults.FirstOrDefaultAsync(pv => pv.Id == id);
     if (passwordVault != null)
     {
-      _context.PasswordVaults.Remove(passwordVault);
+      _context.Vaults.Remove(passwordVault);
       await _context.SaveChangesAsync();
     }
   }

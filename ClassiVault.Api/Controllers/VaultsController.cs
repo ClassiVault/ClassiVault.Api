@@ -5,21 +5,21 @@ using ClassiVault.Api.DataAccess.Models;
 [ApiController]
 public class VaultsController : ControllerBase
 {
-    private readonly IPasswordVaultService _service;
+    private readonly IVaultService _service;
 
-    public VaultsController(IPasswordVaultService service)
+    public VaultsController(IVaultService service)
     {
         _service = service;
     }
 
     [HttpGet]
-    public async Task<ActionResult<List<PasswordVault>>> GetAll()
+    public async Task<ActionResult<List<Vault>>> GetAll()
     {
         return await _service.GetAllAsync();
     }
 
     [HttpGet("{id}")]
-    public async Task<ActionResult<PasswordVault>> GetOne(long id)
+    public async Task<ActionResult<Vault>> GetOne(long id)
     {
         var passwordVault = await _service.GetOneAsync(id);
         if (passwordVault == null)
@@ -30,13 +30,13 @@ public class VaultsController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<ActionResult<PasswordVault>> Add(PasswordVault passwordVault)
+    public async Task<ActionResult<Vault>> Add(Vault passwordVault)
     {
         return await _service.AddAsync(passwordVault);
     }
 
     [HttpPut]
-    public async Task<ActionResult<PasswordVault>> Update(PasswordVault passwordVault)
+    public async Task<ActionResult<Vault>> Update(Vault passwordVault)
     {
         return await _service.UpdateAsync(passwordVault);
     }
