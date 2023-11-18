@@ -3,11 +3,11 @@ using Microsoft.AspNetCore.Mvc;
 
 [Route("api/[controller]")]
 [ApiController]
-public class EncryptionKeyInfoController : ControllerBase
+public class KeysController : ControllerBase
 {
   private readonly IEncryptionKeyInfoService _service;
 
-  public EncryptionKeyInfoController(IEncryptionKeyInfoService service)
+  public KeysController(IEncryptionKeyInfoService service)
   {
     _service = service;
   }
