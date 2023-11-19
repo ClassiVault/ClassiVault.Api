@@ -22,4 +22,4 @@ jobs:
         docker run --name tests classivault-tests
 
     - name: Collect test results
-      run: docker cp tests:/app/tests/TestResults/ .
+      run: docker cp tests:/src/ClassiVault.Tests/TestResults/ .
