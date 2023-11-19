@@ -1,0 +1,25 @@
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    services:
+      docker:
+        image: docker:19.03.12
+        options: --privileged
+        ports:
+          - 8080:8080
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Build and Run Tests
+      run: |
+        docker build -t classivault-tests -f ClassiVault.Tests/Dockerfile .
+        docker run --name tests classivault-tests
+
+    - name: Collect test results
+      run: docker cp tests:/src/ClassiVault.Tests/TestResults/ .
