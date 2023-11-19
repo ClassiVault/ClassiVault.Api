@@ -18,60 +18,60 @@ public class VaultServiceTests
     public async Task GetAllAsync_ShouldReturnList()
     {
         // Arrange
-        var passwordVaults = new List<Vault>
+        var vaults = new List<Vault>
         {
             new Vault(),
             new Vault()
         };
-        _mockService.Setup(service => service.GetAllAsync()).ReturnsAsync(passwordVaults);
+        _mockService.Setup(service => service.GetAllAsync()).ReturnsAsync(vaults);
 
         // Act
         var result = await _mockService.Object.GetAllAsync();
 
         // Assert
-        Assert.Equal(passwordVaults, result);
+        Assert.Equal(vaults, result);
     }
 
     [Fact]
-    public async Task GetOneAsync_ShouldReturnPasswordVault()
+    public async Task GetOneAsync_ShouldReturnvault()
     {
         // Arrange
-        var passwordVault = new Vault();
-        _mockService.Setup(service => service.GetOneAsync(It.IsAny<long>())).ReturnsAsync(passwordVault);
+        var vault = new Vault();
+        _mockService.Setup(service => service.GetOneAsync(It.IsAny<long>())).ReturnsAsync(vault);
 
         // Act
         var result = await _mockService.Object.GetOneAsync(1);
 
         // Assert
-        Assert.Equal(passwordVault, result);
+        Assert.Equal(vault, result);
     }
 
     [Fact]
-    public async Task AddAsync_ShouldReturnPasswordVault()
+    public async Task AddAsync_ShouldReturnvault()
     {
         // Arrange
-        var passwordVault = new Vault();
-        _mockService.Setup(service => service.AddAsync(It.IsAny<Vault>())).ReturnsAsync(passwordVault);
+        var vault = new Vault();
+        _mockService.Setup(service => service.AddAsync(It.IsAny<Vault>())).ReturnsAsync(vault);
 
         // Act
         var result = await _mockService.Object.AddAsync(new Vault());
 
         // Assert
-        Assert.Equal(passwordVault, result);
+        Assert.Equal(vault, result);
     }
 
     [Fact]
-    public async Task UpdateAsync_ShouldReturnUpdatedPasswordVault()
+    public async Task UpdateAsync_ShouldReturnUpdatedvault()
     {
         // Arrange
-        var passwordVault = new Vault();
-        _mockService.Setup(service => service.UpdateAsync(It.IsAny<Vault>())).ReturnsAsync(passwordVault);
+        var vault = new Vault();
+        _mockService.Setup(service => service.UpdateAsync(It.IsAny<Vault>())).ReturnsAsync(vault);
 
         // Act
         var result = await _mockService.Object.UpdateAsync(new Vault());
 
         // Assert
-        Assert.Equal(passwordVault, result);
+        Assert.Equal(vault, result);
     }
 
     [Fact]

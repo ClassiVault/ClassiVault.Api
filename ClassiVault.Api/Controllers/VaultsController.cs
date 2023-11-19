@@ -22,24 +22,24 @@ public class VaultsController : ControllerBase
     [HttpGet("{id}")]
     public async Task<ActionResult<Vault>> GetOne(long id)
     {
-        var passwordVault = await _service.GetOneAsync(id);
-        if (passwordVault == null)
+        var vaults = await _service.GetOneAsync(id);
+        if (vaults == null)
         {
             return NotFound();
         }
-        return passwordVault;
+        return vaults;
     }
 
     [HttpPost]
-    public async Task<ActionResult<Vault>> Add(Vault passwordVault)
+    public async Task<ActionResult<Vault>> Add(Vault vault)
     {
-        return await _service.AddAsync(passwordVault);
+        return await _service.AddAsync(vault);
     }
 
     [HttpPut]
-    public async Task<ActionResult<Vault>> Update(Vault passwordVault)
+    public async Task<ActionResult<Vault>> Update(Vault vault)
     {
-        return await _service.UpdateAsync(passwordVault);
+        return await _service.UpdateAsync(vault);
     }
 
     [HttpDelete("{id}")]
